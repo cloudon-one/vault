@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cloudops-dev-eu-svc-1afa",
+  "private_key_id": "0901a6a92a1380b2c2142bb510b7d0d6928c02a4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCknOdT+xlH99k8\n1AyUbm8G9i638zs105xBuiEXpqy4AI1w7+4zn/docvqjYrfIyotuRAEe2IE/u5EL\nIZZjv/DB2PEnpK/xYkkq76n/0B9DoK4nwoNETTljXdCGLt8Ay28VIN20XO9YMscf\noRmLlh4AiHkFd+NeBrmGZ23ByAosbUNZbNW5KGTgtSw0cjPkcWFQi46BA5T9uJbt\n9+jteZRfPrsHuSoKwY/GcC6B8D/TfPuCgTiRqBqJLgpdTsEWieESvSr9d6yQVpww\n2W3OmWqtJ6gssRQp8Pbr855djZKCySjuRebQ6JCetfcpJsPuqktnaVKIaCQgJpTW\nFIJQZ8l/AgMBAAECggEAAx2nMUtA9MBHv+OBo3OdrWOOidPUTJYHUKUtyC1S+p6k\nDr2z5A1EmRkIDnypXucakYk+/i7571NlEPFfT98LtxecpPP0kpyaJvJnZNyzIswR\nT9ZaNrpBelSFxGxxsymmnh9DowzZSPGZHEun2KEMS1VJ+SUGTDrTWyxtAux+6M1W\n30OV+Up7OV13s70M77r/fSqzUAx+IC85iVz9EGxOripLDMFprWlOcX7/kW/RTfmn\noVZ0NlbxaP5CK1Bco8WKAfSnSpGlz8BPrL4HE9C5nG00PF2VcSM5PogYpdN1BCG+\nS2vL7EH9S49UA+yFvcqmZ2UhftKgFKjTB1EievK6YQKBgQDYanX7Is9NBfh6rUBc\nwOl8m/IQ95I+g3INgU0cCFDhmzxVqIDY7SSWvYsQiLG/XnFV/XBBJs+ISQuY9tx6\nqjU3rz/k30SA+wcFKd2H+oOcVrqcQTXW9ho5duXquxxt7T9Xzvla/T7OB3VCfdkl\n9EEVm/pEkrpagSagOHpE/n8xoQKBgQDCuM0eTTMeSJa1M0D47NtS+bGjxExCN4vU\nuxT97QcJ9kP6DOL/U69em9dhXcTmpv66DhPYZsotWXup7iCQEbK1QYIs/5EXsIa0\noU5GpcvWj6DPv8S+9mj5+UPwh30/fzJvX3X0jCywoGkjb9x+PF47deMOYcp+Innh\nZOuxl2lnHwKBgHf2S3/yQ8cGUD5wWwUPSl3wc7ZEBaTxZ/9kdUHcujjUvBUfWozk\npyuH1dZMb3sM9vYbjmYPBWseUndwH7c/MlCzrE9KE8cLX1DVbB88FkhLKxYCb73A\nnbjM15XOMmwc3sflywNM7ct3BuDcscoAIzO/SnNIglQ40xhtNhmYmRkBAoGBAJyl\nck24KTFpj+QBcXlPgjlEKgXm+roiWVkvj3mfXxRCivjzuQFSXzgrAp+PgcFUAoPG\no2xpdKf63qMbsBJ2Sl/KbWCp0B1Qo21YftISuuLG9MVsLmi5bkX6ow8y0C1utDIo\nh4nN4n3M7gfWC3l6Mwx+j8SYIwBJ1+bc+0cI2YBdAoGBANJTm9WVQBEpfNMIgeSH\nb0suchyQVKTGh0flV8/kB/imMqTKz7Y7hOmLl7dZHrPZs5tE0v9baGryPkuynS3v\nN2IAuX+XQPna+XczBgr6Bos4rS/dXjoV6Khq8DtsNreTXN+8IKc8yFCB9QeU46rb\nT0xC3LrVpldS3fw4u1QbxZyu\n-----END PRIVATE KEY-----\n",
+  "client_email": "vault-sa@cloudops-dev-eu-svc-1afa.iam.gserviceaccount.com",
+  "client_id": "104943322424841542116",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vault-sa%40cloudops-dev-eu-svc-1afa.iam.gserviceaccount.com"
+}
