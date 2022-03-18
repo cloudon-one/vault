@@ -1,1 +1,0 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"vault","Source":"registry.terraform.io/terraform-google-modules/vault/google","Version":"6.1.1","Dir":".terraform/modules/vault"},{"Key":"vault.cluster","Source":"./modules/cluster","Dir":".terraform/modules/vault/modules/cluster"}]}
