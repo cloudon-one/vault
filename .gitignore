@@ -9,3 +9,5 @@ private.key
 cert.pem
 key.pem
 terraform.plan
+*.key
+*.crt
