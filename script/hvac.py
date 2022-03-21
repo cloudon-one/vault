@@ -5,14 +5,12 @@ from google.oauth2 import service_account  # pip install google-auth
 import hvac  # pip install hvac
 
 # First load some previously generated GCP service account key
-path_to_sa_json = "../terraform/key.json"
+path_to_sa_json = "../vaults.json"
 credentials = service_account.Credentials.from_service_account_file(path_to_sa_json)
 with open(path_to_sa_json, "r") as f:
     creds = json.load(f)
-    project = creds["cloudops-dev-eu-svc-1afa"]  # $PROJECT_ID
-    service_account = creds[
-        "vault-sa@cloudops-dev-eu-svc-1afa.iam.gserviceaccount.com"
-    ]  # VAULT_SA
+    project = creds["vault-poc-344807"]  # $PROJECT_ID
+    service_account = creds["vault-sa@vault-poc-344807.iam.gserviceaccount.com"]
 
 # Generate a payload for subsequent "signJwt()" call
 # Reference: https://google-auth.readthedocs.io/en/latest/reference/google.auth.jwt.html#google.auth.jwt.Credentials
