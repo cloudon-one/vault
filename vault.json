@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "vault-poc-344807",
+  "private_key_id": "126ac1a3fc0a90bc766e289b5b24cfbdd7ad97ab",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC8Xhzeid3pak8G\nptXqXHaSBjIv+Etp67FhDzwibb45d2M98ej9CgRlM9OYXr9pwniAs0GtSmYX/Ucc\nYceR8H5SdBxmrxu4AN8HEBGb71/xDTS1N2gyUtWOtPXV2K/Z5IuDmJXrrVH1c7Vc\n4Xk4fUrrjY2h/o8gPmuYjYlccbsIemvgYKL4aSfDJIfA1m9VpEDXgGGWbLlOvUNG\nU6TNqVL+iNODbHHwD4qBkRRCy92TIzcUFAx4DesAG9+4Ejn0R+MwBDkIHdWIvSUG\nCCzQTTzk/cqwRSbxR1JbeV5943PrKdeu4sWXCHJ1DW4rLdUkc6ObRTlBQZcYRhhu\nmaYNSryJAgMBAAECggEAGoZUIWAfkAlIxIKEt+I6ThiyQ3/+upUWXrkC+kQi17vA\njU39xXf+I3QXVSruYEmip1jWpDzIQJOJSm1YaWwIlbrE7w60ZAY3Yaq5GBCunWaD\nKAt70C5K5TQFNA41wQSGQssfPVckJeCbxs73P2WhQacmrQuIAv3XL92qXIqlUC2S\ngDjhNLcZEfhnbt1SUeKQZuvpTeIf1hxAQLIXxqLq6VJuetaZEwJmyCW2mCVTqFy3\nF9uMT7WNDuZ5J7NyPgpyQ5y3Z8PwBmvTG8jaH0ZCJUzPi48MN82FcNtwlBK98r/P\nSsyLbfZEHJsBopnDOzawrFens5ATukpr6fiKP0uDyQKBgQD9FL+wBqYEfSi/tE4b\ncncG+Qrm9ZXPsvRWjreP2KE+yQflcdlSnJrxWSkekdWeIy+PznVcE5KqFXu2+e3a\nzqOCUkUkcAxHIujJzLiaH8VbwCBoixktiQCkyupiCtK3hO8jV4QOvUm3Fhl+5JoM\n/cHUoCwpJy3KedXm/jpfTqv5PQKBgQC+ikpDVSyuX92k+lsM9sc+yxLe0UonJL/b\ngYVLSzNzCDVUZQPRtME1YAoC0PZdPSYye+AtyOQI2uHYpu9DxJL2hc+HpZUXjIuJ\noU9MVkgQwiOHVaGZQ5xf2qDIgXQg2L9UN/j/p4eqaU9/jJwxF8I4Ty7djaKVa28Q\nYCxW4U1NPQKBgBfSkSyno47+nQxWk5ef0bZ1UOJmsaBobvmK25qNwLfhQn4Flnhh\nR3B6fRVkkuAc3chCned57C9YcFnL8ujK1LdauSlx5qX3kkQUojfXz8MQNbzBgzA3\nGjlo5GEwNZ+SwtPn1AVzKfIzAVlheWLJrCownZeOGZBaoZjpy2LXS/bdAoGAMGkc\nYy0h1BABVWhSd+G/T8Hywm/0YiuhH1kyD6ZEpSZhvlaH+ODu8eu7v2luHtRpfwwg\nMiHHZkSOeyg2xEYOfNoUl0dHsRsBXO+CIUgOuUtKEZl9HF6kPWpjzW2unqXTPseV\n2QasnmxxSVvlV0fNDdd4dcwFkecg6c01lsFZjZUCgYEAyJnKn6dy2F3FTRZKSW5n\nPv54kiQE68aEqt6Z/jdsuL0lVn1ovWQ0R3Pgr4REYmuMv4P3IYkP7RYhm4nU/KjT\nCPtih/khHqxivwUFd8hJrcqCy8cMNwgfzth0yJSUUWMi7ng8mMhohZ2ta6B3Az0Y\nus+j0OS4yQ3Vp0uBetVF8Nk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "vault-sa@vault-poc-344807.iam.gserviceaccount.com",
+  "client_id": "107636486696938116318",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vault-sa%40vault-poc-344807.iam.gserviceaccount.com"
+}
