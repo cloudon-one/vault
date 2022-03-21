@@ -27,3 +27,4 @@ override.tf.json
 *.crt
 key.json
 get-pip.py
+.terraform.lock.hcl

@@ -5,7 +5,7 @@ from google.oauth2 import service_account  # pip install google-auth
 import hvac  # pip install hvac
 
 # First load some previously generated GCP service account key
-path_to_sa_json = "../vaults.json"
+path_to_sa_json = "../vault.json"
 credentials = service_account.Credentials.from_service_account_file(path_to_sa_json)
 with open(path_to_sa_json, "r") as f:
     creds = json.load(f)
