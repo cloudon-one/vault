@@ -2,20 +2,8 @@
 
 ## Requirments
 
-- terraform v1.1+
 - gcloud sdk
 - vault binary
-
-### Authenticate the local SDK
-
-    gcloud auth application-default login
-
-### Enable the Compute Engine API
-
-```sh
-gcloud services enable --project "${GOOGLE_CLOUD_PROJECT}" </span>
-    compute.googleapis.com
-```
 
 ### Exports
 
