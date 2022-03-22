@@ -32,3 +32,7 @@ script/__pycache__/hvac.cpython-37.pyc
 lib
 env
 playtika_logo.webp
+vault_aws.csv
+vault_aws.xlsx
+script/cert.pem
+script/selfsigned.key

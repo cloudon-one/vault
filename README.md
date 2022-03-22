@@ -76,9 +76,8 @@ algorithm=symmetric_encryption
 
 ```
 vault secrets enable -path=gcp gcp
-
 vault login -method=gcp \
-role="demo" \
+role="*" \
 service_account="VAULT_SA" \
 jwt_exp="15m" \
 credentials=@vault.json
@@ -136,3 +135,21 @@ max_ttl="24h"
 ```
 vault read database/creds/demo
 ```
+
+# Vault cluster and client on AWS
+
+### Connection settings
+
+```
+Vault Server IP (public):  34.247.47.216
+Vault Server IP (private): 10.0.101.91
+
+For example:
+   ssh -i vault-aws-demo.pem ubuntu@34.247.47.216
+
+Vault Client IP (public):  54.77.154.26
+Vault Client IP (private): 10.0.101.170
+
+For example:
+   ssh -i vault-aws-demo.pem ubuntu@54.77.154.26
+   ```
