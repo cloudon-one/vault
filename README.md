@@ -1,4 +1,4 @@
-# HashiCorp Vault HA Cluster
+# HashiCorp Vault HA Cluster on GCP
 
 ## Requirments
 
