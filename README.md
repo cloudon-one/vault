@@ -8,11 +8,11 @@
 ### Exports
 
 ```sh
-export GOOGLE_CLOUD_PROJECT="vault-poc-344807"
-export VAULT_ADDR=”[https://34.76.211.38:8200]”
-export VAULT_CACERT="$(pwd)/ca.crt"
-export VAULT_SA="vault-sa@vault-poc-344807.iam.gserviceaccount.com"
-export VAULT_DB="10.150.128.3"
+export GOOGLE_CLOUD_PROJECT=vault-poc-344807
+export VAULT_ADDR=https://34.76.211.38:8200
+export VAULT_CACERT=ca.crt
+export VAULT_SA=vault-sa@vault-poc-344807.iam.gserviceaccount.com
+export VAULT_DB=10.150.128.3
 ```
 
 ### Vault init
