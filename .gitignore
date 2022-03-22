@@ -28,3 +28,6 @@ override.tf.json
 key.json
 get-pip.py
 .terraform.lock.hcl
+script/__pycache__/hvac.cpython-37.pyc
+lib
+env
