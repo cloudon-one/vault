@@ -3,7 +3,7 @@
 #-------------------
 
 # SSH key name to access EC2 instances. This should already exist in the AWS Region
-key_name = "vault-aws-demo"
+key_name = "vault-poc"
 
 
 #-----------------------------------------------
@@ -21,4 +21,4 @@ availability_zones = "eu-west-1a"
 instance_type = "t2.medium"
 
 # Number of Vault servers to provision (default is 1)
-vault_server_count = 1
+vault_server_count = 2

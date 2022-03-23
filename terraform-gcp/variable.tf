@@ -1,6 +1,6 @@
 variable "project_id" {
   type    = string
-  default = "vault-poc-344807" #TS sandbox
+  default = "playtika-vault-poc" #TS sandbox
 }
 
 variable "allow_public_egress" {
@@ -19,7 +19,7 @@ variable "ssh_allowed_cidrs" {
 }
 variable "domain" {
   type    = string
-  default = "vault.cloudon.one"
+  default = "vault.terasky.com"
 }
 
 variable "kms_keyring" {
@@ -51,7 +51,7 @@ variable "project_services" {
 
 variable "service_account_name" {
   type    = string
-  default = "vault-sa"
+  default = "vault-admin"
 }
 
 variable "vault_version" {
@@ -71,28 +71,27 @@ variable "tls_ca_subject" {
     postal_code         = string,
   })
   default = {
-    "common_name" : "CloudOn Inc. Root",
+    "common_name" : "Terasky. Root",
     "country" : "Israel",
     "locality" : "The Intranet",
-    "organization" : "CloudOn, Inc",
+    "organization" : "Terasky, Inc",
     "organizational_unit" : "Department of Certificate Authority",
     "postal_code" : "95559-1227",
     "province" : "Israel",
     "street_address" : [
-      "123 CloudOn Street"
+      "123 Terasky Street"
     ]
   }
 }
 
 variable "tls_cn" {
   type    = string
-  default = "vault-demo.cloudon.one"
+  default = "vault-demo.terasky.com"
 }
 
 variable "tls_dns_names" {
   type = list(string)
   default = [
-    "vault-demo.cloudone.one",
     "vault-demo.terasky.com"
   ]
 }

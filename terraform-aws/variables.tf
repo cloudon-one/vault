@@ -1,10 +1,10 @@
 # AWS region and AZs in which to deploy
 variable "aws_region" {
-  default = "eu-west-1"
+  default = "eu-central-1"
 }
 
 variable "availability_zones" {
-  default = "eu-west-1a"
+  default = "eu-central-1a"
 }
 
 # All resources will be tagged with this
@@ -24,7 +24,7 @@ variable "vault_server_count" {
 
 # URL for Vault OSS binary
 variable "vault_zip_file" {
-  default = "https://releases.hashicorp.com/vault/1.9.4/vault_1.9.4_linux_amd64.zip"
+  default = "https://releases.hashicorp.com/vault/1.6.0/vault_1.6.0_linux_amd64.zip"
 }
 
 # URL for Consul OSS binary

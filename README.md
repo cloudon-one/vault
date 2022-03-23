@@ -1,18 +1,18 @@
-# HashiCorp Vault HA Cluster on GCP
+# HashiCorp Vault HA Cluster on GCP/AWS
 
 ## Requirments
 
 - gcloud sdk
-- vault binary
+- vault binaries installed
 
-### Exports
+### Exports GCP
 
 ```sh
-export GOOGLE_CLOUD_PROJECT=vault-poc-344807
-export VAULT_ADDR=https://34.76.211.38:8200
-export VAULT_CACERT=ca.crt
-export VAULT_SA=vault-sa@vault-poc-344807.iam.gserviceaccount.com
-export VAULT_DB=10.150.128.3
+export GOOGLE_CLOUD_PROJECT="playtika-vault-poc"
+export VAULT_ADDR=https://34.140.99.22:8200
+export VAULT_CACERT="ca.crt"
+export VAULT_SA="vault-sa@playtika-vault-poc.iam.gserviceaccount.com"
+export VAULT_DB="10.150.128.3"
 ```
 
 ### Vault init
@@ -30,12 +30,13 @@ vault operator init \
 ### Recovery keys
 
 ```
-- Recovery Key 1: 2EWrT/YVlYE54EwvKaH3JzOGmq8AVJJkVFQDni8MYC+T
-- Recovery Key 2: 6WCNGKN+dU43APJuGEVvIG6bAHA6tsth5ZR8/bJWi60/
-- Recovery Key 3: XC1vSb/GfH35zTK4UkAR7okJWaRjnGrP75aQX0xByKfV
-- Recovery Key 4: ZSvu2hWWmd4ECEIHj/FShxxCw7Wd2KbkLRsDm30f2tu3
-- Recovery Key 5: T4VBvwRv0pkQLeTC/98JJ+Rj/Zn75bLfmAaFLDQihL9Y
- Initial Root Token: s.kn11NdBhLig2VJ0botgrwq
+Recovery Key 1: Xk44rZO3oVkDIBfAFBI2WLjKLzS0CfUyaZco5TjT7lLq
+Recovery Key 2: T+vqCJRejgfJd+gck4QKBIn8gl6x+YEz0QRo1+WFm2Qb
+Recovery Key 3: B0G/sjfDnhr17yusM1T+qb7OP6km5TlU/m48oDcE9Ywl
+Recovery Key 4: 6UJzSgAAgKaHD9hxWTYOZnQDQHeDo+9c49LMKYSPui7M
+Recovery Key 5: VJ9O1VLwGRkVnVYpY1Zma9gBPs7YRdVQET2u7aG7gLlE
+
+Initial Root Token: s.B3MeNW4KTG3M4mUkMa5iUjWC
 ```
 
 ### Enable Postgres as secrets db (private sql instance)
@@ -43,7 +44,7 @@ vault operator init \
 ```
 vault write database/config/vault-poc \
 plugin_name=postgresql-database-plugin \
-allowed_roles="demo" \
+allowed_roles="*" \
 connection_url="postgresql://{{username}}:{{password}}@$VAULT_DB:5432/" \
 username="vaultuser" \
 password="vaultpass"
@@ -76,39 +77,49 @@ algorithm=symmetric_encryption
 
 ```
 vault secrets enable -path=gcp gcp
+```
+
+### Generate login tooken
+
 vault login -method=gcp \
-role="*" \
-service_account="VAULT_SA" \
+role="demo-role" \
+service_account="vault-sa@playtika-vault-poc.iam.gserviceaccount.com" \
 jwt_exp="15m" \
 credentials=@vault.json
+
 ```
 
  ```
+
 vault write auth/gcp/config \
 credentials=@vault.json
+
 ```
 
 ### Create vault GCP role with IAM
 
 ```
+
 vault write auth/gcp/role/vault \
 type="iam" \
 policies="dev,prod" \
-bound_service_accounts="[$VAULT_SA]"
+bound_service_accounts="[vault-sa@playtika-vault-poc.iam.gserviceaccount.com]"
 {
 "plugin_name": "postgresql-database-plugin",
 "allowed_roles": "*",
-"connection_url": "postgresql://{{username}}:{{password}}@$VAULT_DB:5432/postgres",
+"connection_url": "postgresql://{{username}}:{{password}}@$10.150.128.3:5432/vault",
 "max_open_connections": 5,
 "max_connection_lifetime": "5s",
 "username": "postgres",
-"password": "postgres"
+"password": "QazWsx12"
 }
+
 ```
 
 ### Create GCP roleset
 
  ```
+
 vault write gcp/roleset/demo-roleset \
 project="$PROJECT_ID" \
 secret_type="service_account_key" \
@@ -117,39 +128,74 @@ resource "//cloudresourcemanager.googleapis.com/projects/$PROJECT_ID" {
 roles = ["roles/viewer"]
 }
 EOF
+
 ```
   
 ### Create dynamic keys and store to template
 
 ```
+
 vault write database/roles/demo \
 db_name=vault \
 creation_statements="CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}'; \
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" \
 default_ttl="1h" \
 max_ttl="24h"
+
 ```
   
 ### Validate keys creation
 
 ```
+
 vault read database/creds/demo
+
 ```
+
 
 # Vault cluster and client on AWS
 
 ### Connection settings
 
+Vault Server IP (public):  52.30.46.236, 34.255.1.246
+Vault Server IP (private): 10.0.101.13, 10.0.101.196
+
+For example:
+   ssh -i vault-poc.pem ubuntu@52.30.46.236
+
+Vault Client IP (public):  34.245.189.6
+Vault Client IP (private): 10.0.101.15
+
+For example:
+   ssh -i vault-poc.pem ubuntu@34.245.189.6
+
+### Vault keys 
 ```
-Vault Server IP (public):  34.247.47.216
-Vault Server IP (private): 10.0.101.91
 
-For example:
-   ssh -i vault-aws-demo.pem ubuntu@34.247.47.216
+vault operator init
+Recovery Key 1: LXhVjj6QYK6jRCRvAekN1ux1bho/4Ono40jSMPqViJEg
+Recovery Key 2: CIcQngjDlcjitxKrElZxOX3uFk5vGyWm+571ZKeqQe8c
+Recovery Key 3: Vi9lm+KdCnxv3EtglERC6yvz0zdV7k1v8WtU5Q+ohJeT
+Recovery Key 4: fn8IfdugCyvNT1Ed/icTnFlY9WnNlNSX8g1JsLRsJ4xj
+Recovery Key 5: HwyaNmfQzM16NEsqUkSC6eoFBzp1mqz7y6B6V1tiEcrM
 
-Vault Client IP (public):  54.77.154.26
-Vault Client IP (private): 10.0.101.170
+Initial Root Token: s.CedGUqTOuyqTsucidL9rm623
 
-For example:
-   ssh -i vault-aws-demo.pem ubuntu@54.77.154.26
-   ```
+```
+
+# Configure dynamic secrets and store them to postgres db 
+
+vault write database/config/postgresql \
+     plugin_name=postgresql-database-plugin \
+     connection_url="postgresql://{{username}}:{{password}}@localhost:5432/postgres?sslmode=disable" \
+     allowed_roles=readonly \
+     username="postgres" \
+     password="QazWsx12"
+
+
+vault write database/roles/demo-role \
+    db_name=postgres \
+    creation_statements="CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}'; \
+        GRANT SELECT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" \
+    default_ttl="1h" \
+    max_ttl="24h"

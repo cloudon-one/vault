@@ -36,3 +36,12 @@ vault_aws.csv
 vault_aws.xlsx
 script/cert.pem
 script/selfsigned.key
+terraform-aws/vault-aws-demo.pem
+vault-aws/vault-guides
+script/vault.json
+terraform-aws/terraform.plan
+terraform-aws/vault-poc.pem
+terraform-gcp/vault.json
+vault-aws/vault-guides
+script/vault.json
+script/vault.json
