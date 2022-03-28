@@ -61,14 +61,15 @@ vault server -config=/etc/vault/config.hcl
 ```
 vault write gcpkms/config \
 credentials=@vault.json
+
 vault write gcpkms/keys/vault \
-key_ring=projects/$PROJECT_ID/locations/global/keyRings/vault \
+key_ring=projects/playtika-vault-poc/locations/global/keyRings/vault \
 rotation_period=72h
 ```
 
 ```
-vault write gcpkms/keys/vault-poc \
-key_ring=projects/$PROJECT_ID/locations/global/keyRings/vault-poc \
+vault write gcpkms/keys/vault\
+key_ring=projects/playtika-vault-poc/locations/global/keyRings/vault \
 purpose=encrypt_decrypt \
 algorithm=symmetric_encryption
 ```
@@ -77,6 +78,7 @@ algorithm=symmetric_encryption
 
 ```
 vault secrets enable -path=gcp gcp
+vault write gcp/config credentials=@vault.json
 ```
 
 ### Generate login tooken
@@ -121,16 +123,41 @@ bound_service_accounts="[vault-sa@playtika-vault-poc.iam.gserviceaccount.com]"
  ```
 
 vault write gcp/roleset/demo-roleset \
-project="$PROJECT_ID" \
+project="playtika-vault-poc" \
 secret_type="service_account_key" \
 bindings=-<<EOF
-resource "//cloudresourcemanager.googleapis.com/projects/$PROJECT_ID" {
-roles = ["roles/viewer"]
+resource "//cloudresourcemanager.googleapis.com/projects/playtika-vault-poc" {
+roles = ["roles/editor"]
 }
 EOF
 
 ```
-  
+
+vault read gcp/roleset/demo-roleset/token
+
+
+### Static accounts
+
+vault write gcp/static-account/vault-sa \
+    service_account_email="vault-sa@playtika-vault-poc.iam.gserviceaccount.com" \
+    secret_type="access_token"  \
+    token_scopes="https://www.googleapis.com/auth/cloud-platform" \
+    bindings=-<<EOF
+resource "//cloudresourcemanager.googleapis.com/projects/playtika-vault-poc" {
+roles = ["roles/editor"]
+}
+EOF
+
+vault write gcp/static-account/vault-sa \
+    service_account_email="vault-sa@playtika-vault-poc.iam.gserviceaccount.com" \
+    secret_type="service_account_key"  \
+    bindings=-<<EOF
+resource "//cloudresourcemanager.googleapis.com/projects/playtika-vault-poc" {
+roles = ["roles/editor"]
+}
+EOF
+
+
 ### Create dynamic keys and store to template
 
 ```
@@ -199,3 +226,29 @@ vault write database/roles/demo-role \
         GRANT SELECT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" \
     default_ttl="1h" \
     max_ttl="24h"
+
+
+
+vault write aws/config/root \
+    access_key=ASIA53FYVOWBJD7HESNM \
+    secret_key=sB4NF6ifWlr9dZ2f2HrYjS2407o84H4mDV3SAZFl \
+    region=eu-west-1
+
+
+
+vault write aws/roles/demo-role \
+    credential_type=iam_user \
+    policy_document=-<<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "ec2:*",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+
+vault read aws/creds/demo-role

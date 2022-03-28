@@ -13,11 +13,11 @@ key_name = "vault-poc"
 # All resources will be tagged with this (default is 'vault-agent-demo')
 environment_name = "vault-agent-demo"
 
-# AWS region & AZs (degault is 'us-east-1' and 'us-east-1a')
+# AWS region & AZs
 aws_region         = "eu-west-1"
 availability_zones = "eu-west-1a"
 
-# Instance size (default is t2.micro)
+# Instance size
 instance_type = "t2.medium"
 
 # Number of Vault servers to provision (default is 1)
