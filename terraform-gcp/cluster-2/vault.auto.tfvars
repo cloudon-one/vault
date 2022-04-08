@@ -1,0 +1,5 @@
+project_id          = "playtika-vault-poc"
+domain              = "vault.cloudops.systems"
+network             = "projects/playtika-vault-poc/global/networks/vault-network-2"
+subnet              = "projects/playtika-vault-poc/regions/europe-west2/subnetworks/vault-subnet-2"
+storage_bucket_name = "playtika-vault-poc-vault-data-2"
