@@ -8,11 +8,11 @@
 ### Exports GCP
 
 ```sh
-export GOOGLE_CLOUD_PROJECT="playtika-vault-poc"
-export VAULT_ADDR=https://34.140.99.22:8200
+export GOOGLE_CLOUD_PROJECT=""
+export VAULT_ADDR=https://:8200
 export VAULT_CACERT="ca.crt"
-export VAULT_SA="vault-sa@playtika-vault-poc.iam.gserviceaccount.com"
-export VAULT_DB="10.150.128.3"
+export VAULT_SA="vault-sa@pGOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com"
+export VAULT_DB=""
 ```
 
 ### Vault init
@@ -63,13 +63,13 @@ vault write gcpkms/config \
 credentials=@vault.json
 
 vault write gcpkms/keys/vault \
-key_ring=projects/playtika-vault-poc/locations/global/keyRings/vault \
+key_ring=projects/$GOOGLE_CLOUD_PROJECT/locations/global/keyRings/vault \
 rotation_period=72h
 ```
 
 ```
 vault write gcpkms/keys/vault\
-key_ring=projects/playtika-vault-poc/locations/global/keyRings/vault \
+key_ring=projects/$GOOGLE_CLOUD_PROJECT/locations/global/keyRings/vault \
 purpose=encrypt_decrypt \
 algorithm=symmetric_encryption
 ```
@@ -85,7 +85,7 @@ vault write gcp/config credentials=@vault.json
 
 vault login -method=gcp \
 role="demo-role" \
-service_account="vault-sa@playtika-vault-poc.iam.gserviceaccount.com" \
+service_account="vault-sa@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" \
 jwt_exp="15m" \
 credentials=@vault.json
 
@@ -105,15 +105,15 @@ credentials=@vault.json
 vault write auth/gcp/role/vault \
 type="iam" \
 policies="dev,prod" \
-bound_service_accounts="[vault-sa@playtika-vault-poc.iam.gserviceaccount.com]"
+bound_service_accounts="[vault-sa@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com]"
 {
 "plugin_name": "postgresql-database-plugin",
 "allowed_roles": "*",
-"connection_url": "postgresql://{{username}}:{{password}}@$10.150.128.3:5432/vault",
+"connection_url": "postgresql://{{username}}:{{password}}@$:5432/vault",
 "max_open_connections": 5,
 "max_connection_lifetime": "5s",
-"username": "postgres",
-"password": "QazWsx12"
+"username": "",
+"password": ""
 }
 
 ```
@@ -123,10 +123,10 @@ bound_service_accounts="[vault-sa@playtika-vault-poc.iam.gserviceaccount.com]"
  ```
 
 vault write gcp/roleset/demo-roleset \
-project="playtika-vault-poc" \
+project="$GOOGLE_CLOUD_PROJECT" \
 secret_type="service_account_key" \
 bindings=-<<EOF
-resource "//cloudresourcemanager.googleapis.com/projects/playtika-vault-poc" {
+resource "//cloudresourcemanager.googleapis.com/projects/$GOOGLE_CLOUD_PROJECT" {
 roles = ["roles/editor"]
 }
 EOF
@@ -139,20 +139,20 @@ vault read gcp/roleset/demo-roleset/token
 ### Static accounts
 
 vault write gcp/static-account/vault-sa \
-    service_account_email="vault-sa@playtika-vault-poc.iam.gserviceaccount.com" \
+    service_account_email="vault-sa@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" \
     secret_type="access_token"  \
     token_scopes="https://www.googleapis.com/auth/cloud-platform" \
     bindings=-<<EOF
-resource "//cloudresourcemanager.googleapis.com/projects/playtika-vault-poc" {
+resource "//cloudresourcemanager.googleapis.com/projects/$GOOGLE_CLOUD_PROJECT" {
 roles = ["roles/editor"]
 }
 EOF
 
 vault write gcp/static-account/vault-sa \
-    service_account_email="vault-sa@playtika-vault-poc.iam.gserviceaccount.com" \
+    service_account_email="vault-sa@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" \
     secret_type="service_account_key"  \
     bindings=-<<EOF
-resource "//cloudresourcemanager.googleapis.com/projects/playtika-vault-poc" {
+resource "//cloudresourcemanager.googleapis.com/projects/$GOOGLE_CLOUD_PROJECT" {
 roles = ["roles/editor"]
 }
 EOF
@@ -184,17 +184,17 @@ vault read database/creds/demo
 
 ### Connection settings
 
-Vault Server IP (public):  52.30.46.236, 34.255.1.246
-Vault Server IP (private): 10.0.101.13, 10.0.101.196
+Vault Server IP (public):  
+Vault Server IP (private): 
 
 For example:
-   ssh -i vault-poc.pem ubuntu@52.30.46.236
+   ssh -i vault.pem ubuntu@
 
-Vault Client IP (public):  34.245.189.6
-Vault Client IP (private): 10.0.101.15
+Vault Client IP (public):  
+Vault Client IP (private): 
 
 For example:
-   ssh -i vault-poc.pem ubuntu@34.245.189.6
+   ssh -i vault.pem ubuntu@
 
 ### Vault keys 
 ```
@@ -216,8 +216,8 @@ vault write database/config/postgresql \
      plugin_name=postgresql-database-plugin \
      connection_url="postgresql://{{username}}:{{password}}@localhost:5432/postgres?sslmode=disable" \
      allowed_roles=readonly \
-     username="postgres" \
-     password="QazWsx12"
+     username="" \
+     password=""
 
 
 vault write database/roles/demo-role \
@@ -230,8 +230,8 @@ vault write database/roles/demo-role \
 
 
 vault write aws/config/root \
-    access_key=ASIA53FYVOWBJD7HESNM \
-    secret_key=sB4NF6ifWlr9dZ2f2HrYjS2407o84H4mDV3SAZFl \
+    access_key= \
+    secret_key= \
     region=eu-west-1
 
 
