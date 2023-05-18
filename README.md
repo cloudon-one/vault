@@ -27,18 +27,6 @@ vault operator init \
     -recovery-threshold 3
 ```
 
-### Recovery keys
-
-```
-Recovery Key 1: Xk44rZO3oVkDIBfAFBI2WLjKLzS0CfUyaZco5TjT7lLq
-Recovery Key 2: T+vqCJRejgfJd+gck4QKBIn8gl6x+YEz0QRo1+WFm2Qb
-Recovery Key 3: B0G/sjfDnhr17yusM1T+qb7OP6km5TlU/m48oDcE9Ywl
-Recovery Key 4: 6UJzSgAAgKaHD9hxWTYOZnQDQHeDo+9c49LMKYSPui7M
-Recovery Key 5: VJ9O1VLwGRkVnVYpY1Zma9gBPs7YRdVQET2u7aG7gLlE
-
-Initial Root Token: s.B3MeNW4KTG3M4mUkMa5iUjWC
-```
-
 ### Enable Postgres as secrets db (private sql instance)
 
 ```
@@ -46,8 +34,8 @@ vault write database/config/vault-poc \
 plugin_name=postgresql-database-plugin \
 allowed_roles="*" \
 connection_url="postgresql://{{username}}:{{password}}@$VAULT_DB:5432/" \
-username="vaultuser" \
-password="vaultpass"
+username="" \
+password=""
 ```
 
 ### Vault config hcl
@@ -196,19 +184,6 @@ Vault Client IP (private):
 For example:
    ssh -i vault.pem ubuntu@
 
-### Vault keys 
-```
-
-vault operator init
-Recovery Key 1: LXhVjj6QYK6jRCRvAekN1ux1bho/4Ono40jSMPqViJEg
-Recovery Key 2: CIcQngjDlcjitxKrElZxOX3uFk5vGyWm+571ZKeqQe8c
-Recovery Key 3: Vi9lm+KdCnxv3EtglERC6yvz0zdV7k1v8WtU5Q+ohJeT
-Recovery Key 4: fn8IfdugCyvNT1Ed/icTnFlY9WnNlNSX8g1JsLRsJ4xj
-Recovery Key 5: HwyaNmfQzM16NEsqUkSC6eoFBzp1mqz7y6B6V1tiEcrM
-
-Initial Root Token: s.CedGUqTOuyqTsucidL9rm623
-
-```
 
 # Configure dynamic secrets and store them to postgres db 
 
