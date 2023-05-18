@@ -2,7 +2,7 @@
 # --------------------
 variable "project_id" {
   type    = string
-  default = "playtika-vault-poc"
+  default = ""
 
   description = "ID of the project in which to create resources and add IAM bindings."
 
@@ -25,7 +25,7 @@ variable "project_services" {
 
 variable "region" {
   type    = string
-  default = "europe-west2"
+  default = "us-central1"
 
   description = "Region in which to create resources."
 
@@ -38,7 +38,7 @@ variable "region" {
 
 variable "storage_bucket_name" {
   type    = string
-  default = "playtika-vault-poc-vault-data-2"
+  default = ""
 
   description = "Name of the Google Cloud Storage bucket for the Vault backend storage. This must be globally unique across of of GCP. If left as the empty string, this will default to: '<project-id>-vault-data'."
 }
@@ -267,8 +267,8 @@ variable "tls_ca_subject" {
   })
 
   default = {
-    common_name         = "Terasky. Root"
-    organization        = "terasky, Inc"
+    common_name         = ""
+    organization        = ""
     organizational_unit = "Department of Certificate Authority"
     street_address      = ["123 Example Street"]
     locality            = "The Intranet"
@@ -280,7 +280,7 @@ variable "tls_ca_subject" {
 
 variable "tls_cn" {
   description = "The TLS Common Name for the TLS certificates"
-  default     = "vault-2.cloudops.systems"
+  default     = ""
 }
 
 variable "domain" {
@@ -291,7 +291,7 @@ variable "domain" {
 variable "tls_dns_names" {
   description = "List of DNS names added to the Vault server self-signed certificate"
   type        = list(string)
-  default     = ["vault-2.cloudops.systems"]
+  default     = [""]
 }
 
 variable "tls_ips" {
@@ -336,7 +336,7 @@ variable "vault_instance_labels" {
   type = map(string)
   default = {
     "vault-cluster-2" = "true"
-    "location"        = "europe-west2"
+    "location"        = "us-central1"
 
   }
 
@@ -354,7 +354,7 @@ variable "vault_instance_metadata" {
   type = map(string)
   default = {
     "vault-cluster-2" = "true"
-    "location"        = "europe-west2"
+    "location"        = "us-central1"
   }
 
   description = "Additional metadata to add to the Vault instances."
