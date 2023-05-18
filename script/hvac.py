@@ -13,9 +13,9 @@ with open(path_to_sa_json, "r") as f:
     creds = json.load(f)
 
     # pdb.set_trace()
-    # project = creds["vault-poc-344807"]  # $PROJECT_ID
+    # project = creds["$PROJECT_ID"]
     project = creds["project_id"]
-    # service_account = creds["vault-sa@vault-poc-344807.iam.gserviceaccount.com"]
+    # service_account = creds["vault-sa@$PROJECT_ID.iam.gserviceaccount.com"]
     service_account = creds["client_email"]
 
 # Generate a payload for subsequent "signJwt()" call
