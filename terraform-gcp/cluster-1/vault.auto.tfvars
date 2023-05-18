@@ -1,2 +1,2 @@
-project_id = "playtika-vault-poc"
-domain     = "vault.cloudops.systems"
+project_id = ""
+domain     = ""
