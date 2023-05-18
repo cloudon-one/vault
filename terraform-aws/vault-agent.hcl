@@ -17,7 +17,7 @@ auto_auth {
 }
 
 vault {
-  address = "http://10.0.101.62:8200"
+  address = "http://:8200"
 }
 
 template {
