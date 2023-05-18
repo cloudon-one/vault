@@ -1,12 +1,12 @@
 vault {
-  address = "https://35.189.193.146:8200" #VAULT_ADDR
+  address = "https://:8200" #VAULT_ADDR
   retry {
     num_retries = 3
   }
 }
 auto_auth {
   method "gcp" {
-    mount_path = "auth/vault-poc-344807" #PROJECT_ID
+    mount_path = "auth/$PROJECT_ID" 
     config = {
       type = "gce"
       role = "gce-role"
