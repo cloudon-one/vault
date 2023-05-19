@@ -46,7 +46,7 @@ mkdir /etc/vault.d/plugins
 cat <<"EOF" > /etc/vault.d/config.hcl
 # Run Vault in HA mode. Even if there's only one Vault node, it doesn't hurt to
 # have this set.
-api_addr     = "https://vault.cloudops.systems:8200"
+api_addr     = "https://LOCAL_IP:8200"
 # LOCAL_IP is replaced with the eth0 IP address by the startup script.
 cluster_addr = "https://LOCAL_IP:8201"
 
@@ -61,8 +61,8 @@ plugin_directory = "/etc/vault.d/plugins"
 
 # Enable auto-unsealing with Google Cloud KMS
 #seal "gcpckms" {
-#  project    = "playtika-vault-poc"
-#  region     = "europe-west1"
+#  project    = ""
+#  region     = "us-central1"
 #  key_ring   = "vault-cluster-1"
 #  crypto_key = "vault-cluster-1"
 #}
@@ -83,13 +83,13 @@ listener "tcp" {
 # Create non-TLS listener for the HTTP legacy health checks.  Make sure the VPC
 # firewall doesn't allow traffic to this port except from the probe IP range.
 #listener "tcp" {
-#  address     = "35.205.98.116:58200"
+#  address     = "LOCAL_IP:58200"
 #  tls_disable = 1
 #}
 
 # Create an mTLS listener on the load balancer address
 #listener "tcp" {
-#  address            = "35.205.98.116:8200"
+#  address            = "LOCAL_IP:8200"
 #  tls_cert_file      = "/etc/vault.d/tls/vault.crt"
 #  tls_key_file       = "/etc/vault.d/tls/vault.key"
 #  tls_client_ca_file = "/etc/vault.d/tls/ca.crt"
