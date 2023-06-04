@@ -46,3 +46,4 @@ vault-aws/vault-guides
 script/vault.json
 script/vault.json
 vault-aws/vault-guides
+terraform-gcp/cluster-1/certs/vault.key

@@ -2,7 +2,7 @@
 # --------------------
 variable "project_id" {
   type    = string
-  default = "playtika-vault-poc"
+  default = ""
 
   description = "ID of the project in which to create resources and add IAM bindings."
 
@@ -149,7 +149,7 @@ variable "service_account_storage_bucket_iam_roles" {
 
 variable "kms_keyring" {
   type    = string
-  default = "vault-cluster-1"
+  default = "vault-cluster-demo"
 
   description = "Name of the Cloud KMS KeyRing for asset encryption. Terraform will create this keyring."
 
@@ -157,7 +157,7 @@ variable "kms_keyring" {
 
 variable "kms_crypto_key" {
   type    = string
-  default = "vault-cluster-1"
+  default = "vault-cluster-demo"
 
   description = "The name of the Cloud KMS Key used for encrypting initial TLS certificates and for configuring Vault auto-unseal. Terraform will create this key."
 }
@@ -383,7 +383,7 @@ variable "vault_log_level" {
 
 variable "vault_min_num_servers" {
   type    = string
-  default = "3"
+  default = "1"
 
   description = "Minimum number of Vault server nodes in the autoscaling group. The group will not have less than this number of nodes."
 }
