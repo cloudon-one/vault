@@ -25,7 +25,7 @@ variable "project_services" {
 
 variable "region" {
   type    = string
-  default = "europe-west1"
+  default = "europe-west2"
 
   description = "Region in which to create resources."
 
@@ -38,7 +38,7 @@ variable "region" {
 
 variable "storage_bucket_name" {
   type    = string
-  default = ""
+  default = "playtika-vault-poc-vault-data-2"
 
   description = "Name of the Google Cloud Storage bucket for the Vault backend storage. This must be globally unique across of of GCP. If left as the empty string, this will default to: '<project-id>-vault-data'."
 }
@@ -101,7 +101,7 @@ variable "storage_bucket_force_destroy" {
 
 variable "service_account_name" {
   type    = string
-  default = "vault-admin"
+  default = "vault-admin-2"
 
   description = "Name of the Vault service account."
 
@@ -149,7 +149,7 @@ variable "service_account_storage_bucket_iam_roles" {
 
 variable "kms_keyring" {
   type    = string
-  default = "vault-cluster-1"
+  default = "vault-cluster-2"
 
   description = "Name of the Cloud KMS KeyRing for asset encryption. Terraform will create this keyring."
 
@@ -157,7 +157,7 @@ variable "kms_keyring" {
 
 variable "kms_crypto_key" {
   type    = string
-  default = "vault-cluster-1"
+  default = "vault-cluster-2"
 
   description = "The name of the Cloud KMS Key used for encrypting initial TLS certificates and for configuring Vault auto-unseal. Terraform will create this key."
 }
@@ -201,7 +201,7 @@ variable "allow_public_egress" {
 
 variable "network_subnet_cidr_range" {
   type    = string
-  default = "10.151.0.0/20"
+  default = "10.152.0.0/20"
 
   description = "CIDR block range for the subnet."
 }
@@ -280,7 +280,7 @@ variable "tls_ca_subject" {
 
 variable "tls_cn" {
   description = "The TLS Common Name for the TLS certificates"
-  default     = "vault-demo.teasky.com"
+  default     = "vault-2.cloudops.systems"
 }
 
 variable "domain" {
@@ -291,7 +291,7 @@ variable "domain" {
 variable "tls_dns_names" {
   description = "List of DNS names added to the Vault server self-signed certificate"
   type        = list(string)
-  default     = ["vault.cloudops.systems"]
+  default     = ["vault-2.cloudops.systems"]
 }
 
 variable "tls_ips" {
@@ -335,8 +335,8 @@ variable "vault_args" {
 variable "vault_instance_labels" {
   type = map(string)
   default = {
-    "vault-cluster-1" = "true"
-    "location"        = "europe-west1"
+    "vault-cluster-2" = "true"
+    "location"        = "europe-west2"
 
   }
 
@@ -353,8 +353,8 @@ variable "vault_ca_cert_filename" {
 variable "vault_instance_metadata" {
   type = map(string)
   default = {
-    "vault-cluster-1" = "true"
-    "location"        = "europe-west1"
+    "vault-cluster-2" = "true"
+    "location"        = "europe-west2"
   }
 
   description = "Additional metadata to add to the Vault instances."
